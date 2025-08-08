@@ -1,0 +1,35 @@
+import { test, expect } from '@playwright/test';
+
+test('test', async ({ page }) => {
+  await page.getByRole('dialog', { name: 'Thanks for submitting the form' }).click();
+  await page.goto('https://demoqa.com/automation-practice-form');
+  await page.getByRole('textbox', { name: 'First Name' }).click();
+  await page.getByRole('textbox', { name: 'First Name' }).press('CapsLock');
+  await page.getByRole('textbox', { name: 'First Name' }).fill('K');
+  await page.getByRole('textbox', { name: 'First Name' }).press('CapsLock');
+  await page.getByRole('textbox', { name: 'First Name' }).fill('Karthik');
+  await page.getByRole('textbox', { name: 'Last Name' }).click();
+  await page.getByRole('textbox', { name: 'Last Name' }).fill('97');
+  await page.getByRole('textbox', { name: 'name@example.com' }).click();
+  await page.getByRole('textbox', { name: 'name@example.com' }).fill('karthik97@gmail.com');
+  await page.getByRole('textbox', { name: 'Mobile Number' }).click();
+  await page.getByRole('textbox', { name: 'Mobile Number' }).fill('1234567891');
+  await page.locator('.subjects-auto-complete__value-container').click();
+  await page.locator('#subjectsInput').press('CapsLock');
+  await page.locator('#subjectsInput').fill('QA');
+  await page.locator('#subjectsInput').press('CapsLock');
+  await page.getByText('Reading').click();
+  await page.getByRole('textbox', { name: 'Current Address' }).click();
+  await page.getByRole('textbox', { name: 'Current Address' }).press('CapsLock');
+  await page.getByRole('textbox', { name: 'Current Address' }).fill('B');
+  await page.getByRole('textbox', { name: 'Current Address' }).press('CapsLock');
+  await page.getByRole('textbox', { name: 'Current Address' }).fill('Belthangady');
+  await page.getByText('NameEmailGenderMaleFemaleOtherMobile(10 Digits)Date of BirthSubjects').click();
+  await page.locator('#state svg').click();
+  await page.getByText('NCR', { exact: true }).click();
+  await page.locator('div').filter({ hasText: /^Select City$/ }).nth(3).click();
+  await page.getByText('Delhi', { exact: true }).click();
+  await page.getByRole('button', { name: 'Submit' }).click();
+  await page.getByText('Male', { exact: true }).click();
+  await page.getByRole('button', { name: 'Submit' }).click();
+});
